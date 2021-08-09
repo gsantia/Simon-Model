@@ -41,10 +41,8 @@ def random_pick(group_counter):
         total += perc
         if choice <= total:
             return elements[i]
-    else:
-        # Something went wrong
-        print("error!!")
-        return None
+        
+    raise Exception("Error!")
 
 
 
