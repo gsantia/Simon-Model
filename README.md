@@ -1,5 +1,4 @@
-# Simon-Model
+# Simon's Model
 
-A thus far simple implementation of Simon's rich-get-richer model.
-Will allow for tweaking of parameters in the future, as will be used
-in an optimization process for the Zipf-Mandelbrot law.
+A simple implementation of Simon's rich-get-richer model (https://arxiv.org/abs/1608.06313).
+Allows for tweaking of parameters, which is useful in an optimization process for the Zipf-Mandelbrot law.
