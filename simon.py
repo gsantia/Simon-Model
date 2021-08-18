@@ -1,25 +1,26 @@
 from collections import Counter
-import random as ra
-import numpy as np
+from random import random
 
 ###############################################################################
 # Simulate Simon's rich-get-richer model, up to a time designated by the user
 ###############################################################################
 
-def main(max_time, alpha, max_groups = float('Inf')):
+
+def main(max_time, alpha, max_groups=float("Inf")):
     group_counts = Counter()
     initial_time = {}
     M = 0
-    while M < max_groups:   # Only continue until we have the # of groups wanted
-        group_counts['1'] = 1  # Initiate first group
-        initial_time['1'] = 1
-        for t in range(2, max_time + 1): # Go up to max time, first step is different
-            if ra.random() <= alpha:  # New word
-                new_num = str(len(group_counts.values()) + 1)
+    while M < max_groups:
+        group_counts["1"] = 1
+        initial_time["1"] = 1
+        # Go up to max_time, first step is different
+        for time in range(2, max_time + 1):
+            if random() <= alpha:  # New word
+                new_num = str(len(group_counts) + 1)
                 group_counts[new_num] = 1
-                initial_time[new_num] = t
+                initial_time[new_num] = time
                 M += 1
-            else:   # Old word, trickier case
+            else:  # Old word, trickier case
                 draw = random_pick(group_counts)
                 group_counts[draw] += 1
         break
@@ -36,17 +37,10 @@ def random_pick(group_counter):
     elements = list(group_counter.keys())
     percents = [group_counter[group] / total_size for group in elements]
     total = 0
-    choice = ra.random()
+    choice = random()
     for i, perc in enumerate(percents):
         total += perc
         if choice <= total:
             return elements[i]
-        
+
     raise Exception("Error!")
-
-
-
-
-
-
-
