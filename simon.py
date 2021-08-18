@@ -44,3 +44,7 @@ def random_pick(group_counter):
             return elements[i]
 
     raise Exception("Error!")
+
+
+if __name__ == "__main__":
+    print(main())
