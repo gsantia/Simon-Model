@@ -1,10 +1,6 @@
 from collections import Counter
 from random import random
 
-###############################################################################
-# Simulate Simon's rich-get-richer model, up to a time designated by the user
-###############################################################################
-
 
 def main(max_time, alpha, max_groups=float("Inf")):
     group_counts = Counter()
@@ -30,12 +26,13 @@ def main(max_time, alpha, max_groups=float("Inf")):
 
 def random_pick(group_counter):
     """
-    Pick a random element from the counter, with the appropriate weighting
-    and without converting it to an enormous list of elements
+    Pick a random element from the Counter, with the appropriate weighting
+    and without converting it to a largeq list of elements
     """
     total_size = sum(group_counter.values())
-    elements = list(group_counter.keys())
-    percents = [group_counter[group] / total_size for group in elements]
+    percents = [
+        value / total_size for value in group_counter.values()
+    ]
     total = 0
     choice = random()
     for i, perc in enumerate(percents):
